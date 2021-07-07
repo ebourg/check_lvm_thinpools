@@ -3,8 +3,8 @@ use strict;
 use warnings;
 use Getopt::Long;
 
-my $warn = 92.0;
-my $crit = 96.0;
+my $warn = 90.0;
+my $crit = 95.0;
 
 sub get_thinpools {
   $ENV{'LC_ALL'} = 'C';  # Set locale for lvs call
