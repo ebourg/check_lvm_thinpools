@@ -32,16 +32,16 @@ sub check_thinpools {
   for my $thinpool (get_thinpools()) {
     # Check metadata usage
     if ($thinpool->{metadata_percent} > $crit) {
-      add_error(2, "CRITICAL: Meta% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{metadata_percent}%")
+      add_error(2, "CRITICAL: Metadata usage of LVM thinpool $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{metadata_percent}%")
     } elsif ($thinpool->{metadata_percent} > $warn) {
-      add_error(1, "WARNING: Meta% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{metadata_percent}%")
+      add_error(1, "WARNING: Metadata usage of LVM thinpool $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{metadata_percent}%")
     }
 
     # Check data usage
     if ($thinpool->{data_percent} > $crit) {
-      add_error(2, "CRITICAL: Data% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{data_percent}%")
+      add_error(2, "CRITICAL: Data usage of LVM thinpool $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{data_percent}%")
     } elsif ($thinpool->{data_percent} > $warn) {
-      add_error(1, "WARNING: Data% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{data_percent}%")
+      add_error(1, "WARNING: Data usage of LVM thinpool $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{data_percent}%")
     }
   }
 
@@ -88,10 +88,10 @@ my @thinpools = get_thinpools();
 # No thinpool found?
 if (scalar @thinpools == 0) {
   if ($no_thinpools_ok == 1) {
-    print "OK: No thinpools found.\n";
+    print "OK: No LVM thinpools found.\n";
     exit 0;
   } else {
-    print "UNKNOWN: No thinpools found.\n";
+    print "UNKNOWN: No LVM thinpools found.\n";
     exit 3;
   }
 } else {
@@ -99,5 +99,5 @@ if (scalar @thinpools == 0) {
   aggregate_errors();
 }
 
-print "OK - All thinpools OK\n";
+print "OK - All LVM thinpools OK\n";
 exit 0;
