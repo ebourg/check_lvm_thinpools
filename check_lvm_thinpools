@@ -100,4 +100,9 @@ if (scalar @thinpools == 0) {
 }
 
 print "OK - All LVM thinpools OK\n";
+
+for my $thinpool (get_thinpools()) {
+  printf("%-20s data: $thinpool->{data_percent}%%    metadata: $thinpool->{metadata_percent}%%\n", "$thinpool->{vg_name}/$thinpool->{lv_name}");
+}
+
 exit 0;
