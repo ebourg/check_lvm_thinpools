@@ -32,16 +32,16 @@ sub check_thinpools {
   for my $thinpool (get_thinpools()) {
     # Check metadata usage
     if ($thinpool->{metadata_percent} > $crit) {
-      add_error(2, "CRITICAL: Meta% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{metadata_percent}")
+      add_error(2, "CRITICAL: Meta% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{metadata_percent}%")
     } elsif ($thinpool->{metadata_percent} > $warn) {
-      add_error(1, "WARNING: Meta% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{metadata_percent}")
+      add_error(1, "WARNING: Meta% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{metadata_percent}%")
     }
 
     # Check data usage
     if ($thinpool->{data_percent} > $crit) {
-      add_error(2, "CRITICAL: Data% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{data_percent}")
+      add_error(2, "CRITICAL: Data% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{data_percent}%")
     } elsif ($thinpool->{data_percent} > $warn) {
-      add_error(1, "WARNING: Data% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{data_percent}")
+      add_error(1, "WARNING: Data% of $thinpool->{vg_name}/$thinpool->{lv_name} is $thinpool->{data_percent}%")
     }
   }
 
